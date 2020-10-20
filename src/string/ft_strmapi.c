@@ -1,40 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/14 16:22:39 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/20 16:22:41 by msales-a         ###   ########.fr       */
+/*   Created: 2020/01/25 13:29:38 by msales-a          #+#    #+#             */
+/*   Updated: 2020/05/23 10:45:33 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "src/libft.h"
-#include <stdio.h>
+#include "string.h"
 
-void	perff(char *format, ...)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	va_list		arguments;
-	t_print_op	op;
+	int		index;
+	char	*dst;
 
-	va_start(arguments, format);
-	op.format = format;
-	op.arguments = &arguments;
-	ft_parser(&op);
-	ft_spec(&op);
-	printf("%s\n", op.value);
-	va_end(arguments);
-}
-
-int		main()
-{
-	double k;
-
-	k = 3122.55;
-	perff("%g", k);
-	printf("%f \n", k);
-	printf("%e \n", k);
-	printf("%g \n", k);
-	return (0);
+	if (!s || !f)
+		return (0);
+	index = 0;
+	if (!(dst = (char*)malloc(sizeof(char) * (ft_strlen(s) + 1))))
+		return (0);
+	while (s[index])
+	{
+		dst[index] = f(index, s[index]);
+		index++;
+	}
+	dst[index] = '\0';
+	return (dst);
 }

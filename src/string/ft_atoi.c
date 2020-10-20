@@ -1,40 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/14 16:22:39 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/20 16:22:41 by msales-a         ###   ########.fr       */
+/*   Created: 2020/01/25 10:19:33 by msales-a          #+#    #+#             */
+/*   Updated: 2020/05/23 10:42:49 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "src/libft.h"
-#include <stdio.h>
+#include "string.h"
 
-void	perff(char *format, ...)
+int	ft_atoi(char const *str)
 {
-	va_list		arguments;
-	t_print_op	op;
+	int			s;
+	long long	n;
+	long long	p;
 
-	va_start(arguments, format);
-	op.format = format;
-	op.arguments = &arguments;
-	ft_parser(&op);
-	ft_spec(&op);
-	printf("%s\n", op.value);
-	va_end(arguments);
-}
-
-int		main()
-{
-	double k;
-
-	k = 3122.55;
-	perff("%g", k);
-	printf("%f \n", k);
-	printf("%e \n", k);
-	printf("%g \n", k);
-	return (0);
+	s = 1;
+	n = 0;
+	p = n;
+	while (ft_isspace(*str))
+		str++;
+	if (*str == '-' || *str == '+')
+	{
+		s = (*str == '-') ? -1 : 1;
+		str++;
+	}
+	while (ft_isdigit(*str))
+	{
+		n = (n * 10) + (*(str++) - '0');
+		if (p > n)
+			return ((s == -1) ? 0 : -1);
+		p = n;
+	}
+	return (s * n);
 }

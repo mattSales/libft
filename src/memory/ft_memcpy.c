@@ -1,40 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/14 16:22:39 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/20 16:22:41 by msales-a         ###   ########.fr       */
+/*   Created: 2020/01/24 17:11:09 by msales-a          #+#    #+#             */
+/*   Updated: 2020/05/23 10:26:07 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "src/libft.h"
-#include <stdio.h>
+#include "memory.h"
 
-void	perff(char *format, ...)
+void	*ft_memcpy(void *dst, void const *src, size_t n)
 {
-	va_list		arguments;
-	t_print_op	op;
+	unsigned char		*ndst;
+	unsigned char const	*nsrc;
 
-	va_start(arguments, format);
-	op.format = format;
-	op.arguments = &arguments;
-	ft_parser(&op);
-	ft_spec(&op);
-	printf("%s\n", op.value);
-	va_end(arguments);
-}
-
-int		main()
-{
-	double k;
-
-	k = 3122.55;
-	perff("%g", k);
-	printf("%f \n", k);
-	printf("%e \n", k);
-	printf("%g \n", k);
-	return (0);
+	ndst = (unsigned char*)dst;
+	nsrc = (unsigned char const *)src;
+	if (!ndst && !nsrc)
+		return (NULL);
+	while (n-- > 0)
+		*(ndst++) = (*(nsrc++) & 0xff);
+	return (dst);
 }

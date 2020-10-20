@@ -1,40 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/14 16:22:39 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/20 16:22:41 by msales-a         ###   ########.fr       */
+/*   Created: 2020/01/25 13:22:28 by msales-a          #+#    #+#             */
+/*   Updated: 2020/10/15 15:31:40 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "src/libft.h"
-#include <stdio.h>
+#include "string.h"
 
-void	perff(char *format, ...)
+char	*ft_itoa(int n)
 {
-	va_list		arguments;
-	t_print_op	op;
+	int		s;
+	long	v;
+	int		index;
+	char	*str;
 
-	va_start(arguments, format);
-	op.format = format;
-	op.arguments = &arguments;
-	ft_parser(&op);
-	ft_spec(&op);
-	printf("%s\n", op.value);
-	va_end(arguments);
-}
-
-int		main()
-{
-	double k;
-
-	k = 3122.55;
-	perff("%g", k);
-	printf("%f \n", k);
-	printf("%e \n", k);
-	printf("%g \n", k);
-	return (0);
+	v = n;
+	s = (v < 0) ? 1 : 0;
+	v = (v < 0) ? -v : v;
+	index = ft_algs_num(v);
+	if (v == 0)
+		return (ft_strdup("0"));
+	if (!(str = (char*)malloc(sizeof(char) * (index + s + 1))))
+		return (0);
+	str[0] = '-';
+	str[index + s] = '\0';
+	while (v)
+	{
+		str[index + s - 1] = v % 10 + '0';
+		index--;
+		v /= 10;
+	}
+	return (str);
 }

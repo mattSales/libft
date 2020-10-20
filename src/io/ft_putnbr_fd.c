@@ -1,40 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/14 16:22:39 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/20 16:22:41 by msales-a         ###   ########.fr       */
+/*   Created: 2020/01/25 14:05:46 by msales-a          #+#    #+#             */
+/*   Updated: 2020/05/23 10:19:15 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "src/libft.h"
-#include <stdio.h>
+#include "io.h"
 
-void	perff(char *format, ...)
+void	ft_putnbr_fd(int n, int fd)
 {
-	va_list		arguments;
-	t_print_op	op;
+	long long nbr;
 
-	va_start(arguments, format);
-	op.format = format;
-	op.arguments = &arguments;
-	ft_parser(&op);
-	ft_spec(&op);
-	printf("%s\n", op.value);
-	va_end(arguments);
-}
-
-int		main()
-{
-	double k;
-
-	k = 3122.55;
-	perff("%g", k);
-	printf("%f \n", k);
-	printf("%e \n", k);
-	printf("%g \n", k);
-	return (0);
+	nbr = n;
+	if (nbr < 0)
+	{
+		ft_putchar_fd('-', fd);
+		nbr = -nbr;
+	}
+	if (nbr > 10)
+		ft_putnbr_fd(nbr / 10, fd);
+	ft_putchar_fd((nbr % 10) + 48, fd);
 }

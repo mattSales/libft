@@ -1,40 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/14 16:22:39 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/20 16:22:41 by msales-a         ###   ########.fr       */
+/*   Created: 2020/01/25 11:04:48 by msales-a          #+#    #+#             */
+/*   Updated: 2020/05/23 10:26:15 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "src/libft.h"
-#include <stdio.h>
+#include "memory.h"
 
-void	perff(char *format, ...)
+void	*ft_memccpy(void *dst, void const *src, int c, size_t n)
 {
-	va_list		arguments;
-	t_print_op	op;
+	unsigned char const	*psrc;
+	unsigned char		*pdst;
+	unsigned char		k;
+	int					index;
 
-	va_start(arguments, format);
-	op.format = format;
-	op.arguments = &arguments;
-	ft_parser(&op);
-	ft_spec(&op);
-	printf("%s\n", op.value);
-	va_end(arguments);
-}
-
-int		main()
-{
-	double k;
-
-	k = 3122.55;
-	perff("%g", k);
-	printf("%f \n", k);
-	printf("%e \n", k);
-	printf("%g \n", k);
-	return (0);
+	psrc = src;
+	pdst = dst;
+	k = c;
+	index = 0;
+	while (n--)
+	{
+		pdst[index] = psrc[index];
+		if (k == psrc[index])
+			return (pdst + ++index);
+		index++;
+	}
+	return (NULL);
 }

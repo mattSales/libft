@@ -1,40 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_spec_di.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/14 16:22:39 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/20 16:22:41 by msales-a         ###   ########.fr       */
+/*   Created: 2020/10/20 08:48:44 by msales-a          #+#    #+#             */
+/*   Updated: 2020/10/20 09:07:26 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "src/libft.h"
-#include <stdio.h>
+#include "specifiers.h"
 
-void	perff(char *format, ...)
+void	ft_spec_di(t_print_op *op)
 {
-	va_list		arguments;
-	t_print_op	op;
-
-	va_start(arguments, format);
-	op.format = format;
-	op.arguments = &arguments;
-	ft_parser(&op);
-	ft_spec(&op);
-	printf("%s\n", op.value);
-	va_end(arguments);
-}
-
-int		main()
-{
-	double k;
-
-	k = 3122.55;
-	perff("%g", k);
-	printf("%f \n", k);
-	printf("%e \n", k);
-	printf("%g \n", k);
-	return (0);
+	if (op->length <= plength_h)
+		op->value = ft_llitoa(va_arg(*op->arguments, int));
+	else if (op->length <= plength_l)
+		op->value = ft_llitoa(va_arg(*op->arguments, long int));
+	else if (op->length <= plength_ll)
+		op->value = ft_llitoa(va_arg(*op->arguments, long long int));
+	else
+		op->value = ft_ullitoa(va_arg(*op->arguments, size_t));
 }

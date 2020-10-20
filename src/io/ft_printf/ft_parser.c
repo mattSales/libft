@@ -1,40 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_parser.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/14 16:22:39 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/20 16:22:41 by msales-a         ###   ########.fr       */
+/*   Created: 2020/10/15 13:14:26 by msales-a          #+#    #+#             */
+/*   Updated: 2020/10/20 07:43:36 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "src/libft.h"
-#include <stdio.h>
+#include "ft_printf.h"
 
-void	perff(char *format, ...)
+t_print_op	*ft_parser(t_print_op *operation)
 {
-	va_list		arguments;
-	t_print_op	op;
-
-	va_start(arguments, format);
-	op.format = format;
-	op.arguments = &arguments;
-	ft_parser(&op);
-	ft_spec(&op);
-	printf("%s\n", op.value);
-	va_end(arguments);
-}
-
-int		main()
-{
-	double k;
-
-	k = 3122.55;
-	perff("%g", k);
-	printf("%f \n", k);
-	printf("%e \n", k);
-	printf("%g \n", k);
-	return (0);
+	operation->config = 0;
+	operation->width = 0;
+	operation->precision = 0;
+	operation->specifier = 0;
+	if (*operation->format == '%')
+		operation->format++;
+	parse_flags(operation);
+	parse_width(operation);
+	parse_precision(operation);
+	parse_length(operation);
+	if (parse_specifier(operation))
+		return (NULL);
+	return (operation);
 }

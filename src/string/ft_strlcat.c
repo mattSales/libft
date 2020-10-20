@@ -1,40 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/14 16:22:39 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/20 16:22:41 by msales-a         ###   ########.fr       */
+/*   Created: 2020/01/24 19:56:27 by msales-a          #+#    #+#             */
+/*   Updated: 2020/05/23 10:44:54 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "src/libft.h"
-#include <stdio.h>
+#include "string.h"
 
-void	perff(char *format, ...)
+size_t	ft_strlcat(char *dst, char const *src, size_t dstsize)
 {
-	va_list		arguments;
-	t_print_op	op;
+	size_t srclen;
+	size_t dstlen;
 
-	va_start(arguments, format);
-	op.format = format;
-	op.arguments = &arguments;
-	ft_parser(&op);
-	ft_spec(&op);
-	printf("%s\n", op.value);
-	va_end(arguments);
-}
-
-int		main()
-{
-	double k;
-
-	k = 3122.55;
-	perff("%g", k);
-	printf("%f \n", k);
-	printf("%e \n", k);
-	printf("%g \n", k);
-	return (0);
+	if (dstsize == 0)
+		return (ft_strlen(src));
+	dstlen = ft_strnlen(dst, dstsize);
+	if (dstlen == dstsize)
+		return (dstsize + ft_strlen(src));
+	srclen = ft_strnlen(src, dstsize - dstlen - 1);
+	ft_strlcpy(dst + dstlen, src, srclen + 1);
+	return (dstlen + ft_strlen(src));
 }

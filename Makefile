@@ -3,30 +3,39 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: msales-a <msales-a@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/04/20 19:22:35 by msales-a          #+#    #+#              #
-#    Updated: 2020/04/20 23:08:29 by msales-a         ###   ########.fr        #
+#    Created: 2020/01/23 20:52:40 by msales-a          #+#    #+#              #
+#    Updated: 2020/10/14 16:23:08 by msales-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+
 NAME = libftprintf.a
 
-LIBFT_DIR = libft/
+DIRECTORY = ./src/
 
-LIBFT = libft.a
+HEADERS = $(shell find $(DIRECTORY) -name '*.h')
 
-SOURCE_DIR = src/
+SOURCES = $(shell find $(DIRECTORY) -name '*.c')
 
-SOURCE = main.c
-
-OBJECTS = $(SOURCE:.c=.o)
+OBJECTS = $(SOURCES:.c=.o)
 
 all: $(NAME)
 
-$(addprefix $(LIBFT_DIR), $(LIBFT)):
-	@$(MAKE) -C $(LIBFT_DIR)
+$(NAME) : $(OBJECTS) $(HEADERS)
+	@ar rcs $(NAME) $(OBJECTS)
 
-$(NAME):
-	@gcc -Wall -Wextra -Werror -c -g $(SOURCE)
-	@gcc $(OBJECTS) $(addprefix $(LIBFT_DIR), $(LIBFT))
+%.o: %.c
+	@gcc -Wall -Wextra -Werror -g -c $< -o $@
+
+clean : 
+	@rm -f $(OBJECTS)
+
+fclean :
+	@rm -f $(NAME)
+
+re : all clean
+
+test: all
+	cd test && $(MAKE) re

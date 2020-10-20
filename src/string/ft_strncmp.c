@@ -1,40 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/14 16:22:39 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/20 16:22:41 by msales-a         ###   ########.fr       */
+/*   Created: 2020/01/25 09:59:31 by msales-a          #+#    #+#             */
+/*   Updated: 2020/05/23 10:45:34 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "src/libft.h"
-#include <stdio.h>
+#include "string.h"
 
-void	perff(char *format, ...)
+int	ft_strncmp(char const *s1, char const *s2, size_t n)
 {
-	va_list		arguments;
-	t_print_op	op;
+	unsigned char const *ps1;
+	unsigned char const *ps2;
 
-	va_start(arguments, format);
-	op.format = format;
-	op.arguments = &arguments;
-	ft_parser(&op);
-	ft_spec(&op);
-	printf("%s\n", op.value);
-	va_end(arguments);
-}
-
-int		main()
-{
-	double k;
-
-	k = 3122.55;
-	perff("%g", k);
-	printf("%f \n", k);
-	printf("%e \n", k);
-	printf("%g \n", k);
+	if (!n)
+		return (0);
+	ps1 = (unsigned char const *)s1;
+	ps2 = (unsigned char const *)s2;
+	while ((*s1 || *s2) && n--)
+	{
+		if (*ps1 != *ps2 || !*ps1 || !*ps2)
+			return (*ps1 - *ps2);
+		ps1++;
+		ps2++;
+	}
 	return (0);
 }
