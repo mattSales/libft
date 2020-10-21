@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_repeatchr.c                                     :+:      :+:    :+:   */
+/*   ft_strtoupper.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/18 23:08:45 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/21 15:06:55 by msales-a         ###   ########.fr       */
+/*   Created: 2020/10/21 16:12:50 by msales-a          #+#    #+#             */
+/*   Updated: 2020/10/21 16:15:51 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "string.h"
 
-char	*ft_repeatchr(char c, int times)
+char	*ft_strtoupper(char *str)
 {
-	char *result;
+	char	*temp;
+	int		index;
 
-	times = (times < 0) ? 0 : times;
-	result = ft_calloc(times + 1, sizeof(char));
-	ft_memset(result, c, times);
-	return (result);
+	if (!(temp = malloc(sizeof(char) * ft_strlen(str))))
+		return (NULL);
+	index = 0;
+	while (str[index])
+	{
+		temp[index] = ft_toupper(str[index]);
+		index++;
+	}
+	return (temp);
 }

@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 09:32:44 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/20 15:35:34 by msales-a         ###   ########.fr       */
+/*   Updated: 2020/10/21 20:01:48 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_ftoa(long double number, int precision)
 
 	precision = (precision < 0) ? 0 : precision;
 	value = (long long)(number * ft_pow(10, precision + 1));
-	value = (value / 10) + (value % 10 >= 5);
+	value = ((value / 10) + (value % 10 >= 5)) * ((number < 0) ? -1 : 1);
 	length = (number < 0) + (precision != 0) + ft_algs_num(value) + 1;
 	if (!(result = malloc(sizeof(char) * length)))
 		return (NULL);
@@ -28,7 +28,7 @@ char	*ft_ftoa(long double number, int precision)
 	result[--length] = '\0';
 	while (value)
 	{
-		result[--length] = value % 10 + '0';
+		result[--length] = (value % 10) + '0';
 		value /= 10;
 		if (--precision == 0)
 			result[--length] = '.';

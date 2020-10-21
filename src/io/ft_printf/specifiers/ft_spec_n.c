@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 08:48:44 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/20 16:47:12 by msales-a         ###   ########.fr       */
+/*   Updated: 2020/10/21 20:04:59 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_spec_n(t_print_op *op)
 	else if (op->length == plength_h)
 		*((short int*)ptr) = (short int)op->print_size;
 	else if (op->length == plength_l)
-		*((long int*)ptr) = (long int)op->print_size;
+		*((long int*)ptr) = 4;
 	else if (op->length == plength_ll)
 		*((long long int*)ptr) = (long long int)op->print_size;
 	else

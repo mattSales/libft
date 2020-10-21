@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parser.c                                        :+:      :+:    :+:   */
+/*   ft_printf_parser.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 13:14:26 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/20 07:43:36 by msales-a         ###   ########.fr       */
+/*   Updated: 2020/10/21 19:18:35 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_print_op	*ft_parser(t_print_op *operation)
+int	ft_printf_parser(t_print_op *operation)
 {
 	operation->config = 0;
 	operation->width = 0;
 	operation->precision = 0;
 	operation->specifier = 0;
+	operation->value = NULL;
 	if (*operation->format == '%')
 		operation->format++;
 	parse_flags(operation);
@@ -25,6 +26,6 @@ t_print_op	*ft_parser(t_print_op *operation)
 	parse_precision(operation);
 	parse_length(operation);
 	if (parse_specifier(operation))
-		return (NULL);
-	return (operation);
+		return (0);
+	return (1);
 }

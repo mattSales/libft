@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 09:47:34 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/20 16:30:42 by msales-a         ###   ########.fr       */
+/*   Updated: 2020/10/21 16:48:23 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct	s_print_op
 	int			precision;
 	char		length;
 	char		specifier;
-	void		*value;
+	char		*value;
 	char		*format;
 	va_list		*arguments;
 	long long	print_size;

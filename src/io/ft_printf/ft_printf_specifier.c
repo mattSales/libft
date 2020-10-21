@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_spec.c                                          :+:      :+:    :+:   */
+/*   ft_printf_specifier.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 07:45:53 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/20 11:44:22 by msales-a         ###   ########.fr       */
+/*   Updated: 2020/10/21 19:34:22 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_spec(t_print_op *op)
+void	ft_printf_specifier(t_print_op *op)
 {
 	void	(*f[127])();
 
@@ -25,7 +25,7 @@ void	ft_spec(t_print_op *op)
 	f['f' - 0] = ft_spec_f;
 	f['F' - 0] = ft_spec_f;
 	f['e' - 0] = ft_spec_e;
-	f['F' - 0] = ft_spec_e;
+	f['E' - 0] = ft_spec_e;
 	f['g' - 0] = ft_spec_g;
 	f['G' - 0] = ft_spec_g;
 	f['a' - 0] = ft_spec_a;
