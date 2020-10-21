@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 17:22:02 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/21 19:39:57 by msales-a         ###   ########.fr       */
+/*   Updated: 2020/10/21 20:32:42 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,20 @@
 
 int		ft_xprintf(t_print_op *op)
 {
+	char	*temp;
+
 	if (!ft_printf_parser(op))
 		return (0);
 	ft_printf_specifier(op);
 	ft_printf_precision(op);
 	ft_printf_width(op);
 	ft_printf_flags(op);
+	if (ft_strchr("FEGA", op->specifier))
+	{
+		temp = ft_strtoupper(op->value);
+		free(op->value);
+		op->value = temp;
+	}
 	if (op->specifier != 'n')
 	{
 		ft_putstr_fd(op->value, 0);

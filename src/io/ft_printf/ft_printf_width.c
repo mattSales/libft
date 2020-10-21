@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 14:43:37 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/21 17:16:37 by msales-a         ###   ########.fr       */
+/*   Updated: 2020/10/21 20:33:27 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,7 @@ char	*ft_width_a(char *width, t_print_op *op)
 
 	temp = op->value + ((*op->value == '-') ? 3 : 2);
 	temp = ft_strjoin(width, temp);
-	if (op->specifier == 'a')
-		result = ft_strjoin((*op->value == '-') ? "-0x" : "0x", temp);
-	else
-		result = ft_strjoin((*op->value == '-') ? "-0X" : "0X", temp);
+	result = ft_strjoin((*op->value == '-') ? "-0x" : "0x", temp);
 	free(temp);
 	return (result);
 }

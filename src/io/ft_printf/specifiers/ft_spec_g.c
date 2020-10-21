@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 08:48:44 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/20 16:21:25 by msales-a         ###   ########.fr       */
+/*   Updated: 2020/10/21 20:24:48 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_spec_g(t_print_op *op)
 	if (p > x && x >= -4)
 		op->value = ft_ftoa(value, p - (x + 1));
 	else if (op->specifier == 'G')
-		op->value = ft_ftoexp(value, p - 1, true);
+		op->value = ft_ftoexp(value, p - 1);
 	else
-		op->value = ft_ftoexp(value, p - 1, false);
+		op->value = ft_ftoexp(value, p - 1);
 }

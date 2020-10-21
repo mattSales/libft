@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 07:45:53 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/21 19:23:09 by msales-a         ###   ########.fr       */
+/*   Updated: 2020/10/21 20:36:27 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,8 @@ void	ft_printf_flags_hashtag_base(t_print_op *op)
 	{
 		if (op->specifier == 'o')
 			temp = ft_strjoin("0", op->value);
-		if (op->specifier == 'x')
+		if (op->specifier == 'x' || op->specifier == 'X')
 			temp = ft_strjoin("0x", op->value);
-		if (op->specifier == 'X')
-			temp = ft_strjoin("0X", op->value);
 		free(op->value);
 		op->value = temp;
 	}
@@ -70,8 +68,8 @@ int		ft_printf_flags_hashtag_dot_aeg(t_print_op *op)
 		return (0);
 	ptr = NULL;
 	index = 0;
-	while ("pPeE"[index] && !ptr)
-		ptr = ft_strchr(op->value, "pPeE"[index++]);
+	while ("pe"[index] && !ptr)
+		ptr = ft_strchr(op->value, "pe"[index++]);
 	if (!ptr)
 		ptr = ft_strchr(op->value, '\0');
 	temp = ft_substr(op->value, 0, ptr - op->value);

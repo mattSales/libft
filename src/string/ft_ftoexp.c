@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 11:45:50 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/20 15:56:37 by msales-a         ###   ########.fr       */
+/*   Updated: 2020/10/21 20:24:04 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int		ft_get_mantissa(long double number)
 	return (index);
 }
 
-char	*ft_format_mantissa(int mantissa, bool upper)
+char	*ft_format_mantissa(int mantissa)
 {
 	char *m;
 	char *temp;
@@ -43,14 +43,14 @@ char	*ft_format_mantissa(int mantissa, bool upper)
 	temp = ft_strjoin((mantissa < 10) ? "0" : "", m);
 	free(m);
 	if (mantissa >= 0)
-		m = ft_strjoin((upper) ? "E+" : "e+", temp);
+		m = ft_strjoin("e+", temp);
 	else
-		m = ft_strjoin((upper) ? "E-" : "e-", temp);
+		m = ft_strjoin("e-", temp);
 	free(temp);
 	return (m);
 }
 
-char	*ft_ftoexp(long double number, int precision, bool upper)
+char	*ft_ftoexp(long double number, int precision)
 {
 	int		mantissa;
 	char	*mantissa_temp;
@@ -58,7 +58,7 @@ char	*ft_ftoexp(long double number, int precision, bool upper)
 	char	*result;
 
 	mantissa = ft_get_mantissa(number);
-	mantissa_temp = ft_format_mantissa(mantissa, upper);
+	mantissa_temp = ft_format_mantissa(mantissa);
 	if (mantissa > 0)
 		value_temp = ft_ftoa(number / ft_pow(10, mantissa), precision);
 	else

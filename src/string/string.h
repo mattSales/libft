@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/23 09:32:56 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/21 16:16:05 by msales-a         ###   ########.fr       */
+/*   Updated: 2020/10/21 20:24:44 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		ft_algs_num(long long n);
 int		ft_algs_num_base(long long number, unsigned int radix);
 char	*ft_repeatchr(char c, int times);
 int		ft_get_mantissa(long double number);
-char	*ft_ftoexp(long double number, int precision, bool upper);
+char	*ft_ftoexp(long double number, int precision);
 char	*ft_itoa(int n);
 char	*ft_ftoa(long double number, int precision);
 char	*ft_llitoa(long long n);
