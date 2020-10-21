@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 09:47:34 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/20 13:41:42 by msales-a         ###   ########.fr       */
+/*   Updated: 2020/10/20 16:30:42 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct	s_print_op
 	void		*value;
 	char		*format;
 	va_list		*arguments;
+	long long	print_size;
 }				t_print_op;
 
 # define FLAG_PLUS 1

@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/23 09:32:56 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/20 15:56:58 by msales-a         ###   ########.fr       */
+/*   Updated: 2020/10/21 12:57:38 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,6 @@ char	*ft_itoabase(int number, char const *base);
 char	*ft_llitoabase(long long number, char const *base);
 char	*ft_ullitoabase(unsigned long long number, char const *base);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+char	*ft_hfptoa(double number, int precision);
 
 #endif
