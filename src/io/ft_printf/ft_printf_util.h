@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 09:47:34 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/21 16:48:23 by msales-a         ###   ########.fr       */
+/*   Updated: 2020/10/27 07:52:01 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FT_PRINTF_UTIL_H
 
 # include "printf.h"
+# include <stdbool.h>
 
 typedef struct	s_print_op
 {
@@ -23,7 +24,7 @@ typedef struct	s_print_op
 	char		length;
 	char		specifier;
 	char		*value;
-	char		*format;
+	const char	*format;
 	va_list		*arguments;
 	long long	print_size;
 }				t_print_op;

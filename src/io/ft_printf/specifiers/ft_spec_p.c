@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 08:48:44 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/20 10:15:16 by msales-a         ###   ########.fr       */
+/*   Updated: 2020/10/27 07:41:08 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,17 @@
 
 void	ft_spec_p(t_print_op *op)
 {
-	char	*base;
 	void	*ptr;
+	char	*base;
 	char	*temp;
 
-	base = "0123456789abcdef";
-	ptr = va_arg(*op->arguments, void*);
-	temp = ft_ullitoabase((unsigned long long int)ptr, base);
-	op->value = ft_strjoin("0x", temp);
-	free(temp);
+	if (!(ptr = va_arg(*op->arguments, void*)))
+		op->value = ft_strdup("0x0");
+	else
+	{
+		base = "0123456789abcdef";
+		temp = ft_ullitoabase((unsigned long long int)ptr, base);
+		op->value = ft_strjoin("0x", temp);
+		free(temp);
+	}
 }

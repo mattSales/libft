@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 14:43:37 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/21 17:12:59 by msales-a         ###   ########.fr       */
+/*   Updated: 2020/10/22 18:01:26 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,22 @@
 
 void	ft_printf_precision_diuox(t_print_op *op)
 {
+	int		value;
 	char	*width;
 	char	*temp;
 
-	width = ft_repeatchr('0', op->precision - ft_strlen(op->value));
-	temp = ft_strjoin(width, op->value);
+	value = op->precision - ft_strlen(op->value) + (*op->value == '-');
+	width = ft_repeatchr('0', value);
+	if (op->precision == 0 && *op->value == '0')
+		temp = ft_strjoin(width, width);
+	else if (*op->value == '-')
+	{
+		*op->value = '0';
+		temp = ft_strjoin(width, op->value);
+		*temp = '-';
+	}
+	else
+		temp = ft_strjoin(width, op->value);
 	free(op->value);
 	free(width);
 	op->value = temp;

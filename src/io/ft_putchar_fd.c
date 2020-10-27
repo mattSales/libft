@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 13:41:21 by msales-a          #+#    #+#             */
-/*   Updated: 2020/05/23 10:19:04 by msales-a         ###   ########.fr       */
+/*   Updated: 2020/10/22 09:18:41 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,5 @@ void	ft_putunicode_fd(unsigned int c, int fd)
 
 void	ft_putchar_fd(unsigned int c, int fd)
 {
-	ft_putunicode_fd(c, fd);
+	ft_putbyte_fd(c, fd);
 }

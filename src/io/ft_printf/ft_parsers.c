@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 09:12:31 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/20 07:43:20 by msales-a         ###   ########.fr       */
+/*   Updated: 2020/10/27 08:58:59 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 int	parse_specifier(t_print_op *operation)
 {
-	char	*format;
+	const char	*format;
 
 	format = operation->format;
-	if (!ft_strchr("iduoxXfFeEgGaAcspn%%", *format))
-		return (1);
 	operation->specifier = *format;
 	operation->format++;
+	if (!ft_strchr("iduoxXfFeEgGaAcspn%%", *format))
+		return (1);
 	return (0);
 }
 
@@ -47,7 +47,7 @@ int	parse_length(t_print_op *operation)
 
 int	parse_precision(t_print_op *operation)
 {
-	char *format;
+	const char *format;
 
 	format = operation->format;
 	if (*format != '.')
@@ -66,7 +66,7 @@ int	parse_precision(t_print_op *operation)
 
 int	parse_width(t_print_op *operation)
 {
-	char *format;
+	const char *format;
 
 	format = operation->format;
 	if (*format != '*' && !ft_isdigit(*format))
@@ -83,7 +83,7 @@ int	parse_width(t_print_op *operation)
 
 int	parse_flags(t_print_op *operation)
 {
-	char *format;
+	const char *format;
 
 	format = operation->format;
 	while (ft_strchr("-+ #0", *format))

@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 17:52:42 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/21 19:24:22 by msales-a         ###   ########.fr       */
+/*   Updated: 2020/10/27 08:02:52 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_printf_specifier(t_print_op *op);
 void	ft_printf_width(t_print_op *op);
 void	ft_printf_precision(t_print_op *op);
 void	ft_printf_flags(t_print_op *op);
-int		ft_vprintf(char *format, va_list *arguments);
-int		ft_printf(char *format, ...);
+int		ft_vprintf(const char *format, va_list *arguments);
+int		ft_printf(const char *format, ...);
 
 #endif

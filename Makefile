@@ -6,7 +6,7 @@
 #    By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/23 20:52:40 by msales-a          #+#    #+#              #
-#    Updated: 2020/10/14 16:23:08 by msales-a         ###   ########.fr        #
+#    Updated: 2020/10/21 23:52:48 by msales-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,5 +37,4 @@ fclean :
 
 re : all clean
 
-test: all
-	cd test && $(MAKE) re
+bonus: all
