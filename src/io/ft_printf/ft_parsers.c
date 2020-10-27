@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 09:12:31 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/27 08:58:59 by msales-a         ###   ########.fr       */
+/*   Updated: 2020/10/27 09:28:11 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ int	parse_precision(t_print_op *operation)
 	if (*format != '.')
 		return (0);
 	format++;
-	operation->config = operation->config | HAS_PRECISION;
 	if (ft_isdigit(*format))
 		operation->precision = ft_atoi(format);
 	if (*format == '*')
@@ -61,6 +60,8 @@ int	parse_precision(t_print_op *operation)
 	while (ft_isdigit(*format) || *format == '*')
 		format++;
 	operation->format = format;
+	if (operation->precision >= 0)
+		operation->config |= HAS_PRECISION;
 	return (0);
 }
 
@@ -71,13 +72,18 @@ int	parse_width(t_print_op *operation)
 	format = operation->format;
 	if (*format != '*' && !ft_isdigit(*format))
 		return (0);
-	operation->config = operation->config | HAS_WIDTH;
+	operation->config |= HAS_WIDTH;
 	operation->width = ft_atoi(format);
 	if (*format == '*')
 		operation->width = va_arg(*operation->arguments, int);
 	while (ft_isdigit(*format) || *format == '*')
 		format++;
 	operation->format = format;
+	if (operation->width < 0)
+	{
+		operation->width *= -1;
+		operation->config |= FLAG_MINUS;
+	}
 	return (0);
 }
 
@@ -89,15 +95,15 @@ int	parse_flags(t_print_op *operation)
 	while (ft_strchr("-+ #0", *format))
 	{
 		if (*format == '+')
-			operation->config = operation->config | FLAG_PLUS;
+			operation->config |= FLAG_PLUS;
 		if (*format == '-')
-			operation->config = operation->config | FLAG_MINUS;
+			operation->config |= FLAG_MINUS;
 		if (*format == ' ')
-			operation->config = operation->config | FLAG_SPACE;
+			operation->config |= FLAG_SPACE;
 		if (*format == '#')
-			operation->config = operation->config | FLAG_HASHTAG;
+			operation->config |= FLAG_HASHTAG;
 		if (*format == '0')
-			operation->config = operation->config | FLAG_ZERO;
+			operation->config |= FLAG_ZERO;
 		format++;
 	}
 	operation->format = format;

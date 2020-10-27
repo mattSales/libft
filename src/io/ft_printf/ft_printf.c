@@ -6,13 +6,30 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 17:22:02 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/27 08:59:50 by msales-a         ###   ########.fr       */
+/*   Updated: 2020/10/27 11:31:11 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_xprintf(t_print_op *op)
+void	ft_printf_putstr(t_print_op *op)
+{
+	char *value;
+
+	value = op->value;
+	if (value)
+	{
+		while (*value)
+		{
+			if (*value == '_' && op->null_present)
+				*value = '\0';
+			ft_putchar_fd(*(value++), 1);
+			op->print_size++;
+		}
+	}
+}
+
+int		ft_xprintf(t_print_op *op)
 {
 	char	*temp;
 
@@ -31,14 +48,13 @@ int	ft_xprintf(t_print_op *op)
 	}
 	if (op->specifier != 'n')
 	{
-		ft_putstr_fd(op->value, 1);
-		op->print_size += ft_strlen(op->value);
+		ft_printf_putstr(op);
 		free(op->value);
 	}
 	return (1);
 }
 
-int	ft_vprintf(const char *format, va_list *arguments)
+int		ft_vprintf(const char *format, va_list *arguments)
 {
 	t_print_op op;
 
@@ -61,7 +77,7 @@ int	ft_vprintf(const char *format, va_list *arguments)
 	return (op.print_size);
 }
 
-int	ft_printf(const char *format, ...)
+int		ft_printf(const char *format, ...)
 {
 	va_list arguments;
 	int		index;
