@@ -1,31 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtoupper.c                                    :+:      :+:    :+:   */
+/*   ft_stdfloat.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/21 16:12:50 by msales-a          #+#    #+#             */
-/*   Updated: 2020/11/12 18:22:27 by msales-a         ###   ########.fr       */
+/*   Created: 2020/10/20 11:45:50 by msales-a          #+#    #+#             */
+/*   Updated: 2020/10/30 11:17:01 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "string.h"
 
-char	*ft_strtoupper(char *str)
+int		ft_stdfloat_exp(double number)
 {
-	char	*temp;
+	double	value;
 	int		index;
 
-	index = ft_strlen(str);
-	if (!(temp = malloc(sizeof(char) * (index + 1))))
-		return (NULL);
-	temp[index] = '\0';
+	value = (number < 0) ? number * -1 : number;
 	index = 0;
-	while (str[index])
+	if (value == 0)
+		return (index);
+	while (value >= 10)
 	{
-		temp[index] = ft_toupper(str[index]);
+		value /= 10;
 		index++;
 	}
-	return (temp);
+	while (value < 1)
+	{
+		value *= 10;
+		index--;
+	}
+	return (index);
+}
+
+char	*ft_stdfloat_num(long double number, int precision)
+{
+	int			exp;
+	long double	value;
+	char		*result;
+
+	exp = ft_stdfloat_exp(number) * -1;
+	value = number * ft_pow(10, exp);
+	result = ft_ftoa(value, precision);
+	return (result);
 }

@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 08:48:44 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/20 09:07:26 by msales-a         ###   ########.fr       */
+/*   Updated: 2020/10/29 08:47:04 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,20 @@
 
 void	ft_spec_di(t_print_op *op)
 {
+	long long int	value;
+
 	if (op->length <= plength_h)
-		op->value = ft_llitoa(va_arg(*op->arguments, int));
+		value = va_arg(*op->arguments, int);
 	else if (op->length <= plength_l)
-		op->value = ft_llitoa(va_arg(*op->arguments, long int));
+		value = va_arg(*op->arguments, long int);
 	else if (op->length <= plength_ll)
-		op->value = ft_llitoa(va_arg(*op->arguments, long long int));
+		value = va_arg(*op->arguments, long long int);
 	else
-		op->value = ft_ullitoa(va_arg(*op->arguments, size_t));
+		value = va_arg(*op->arguments, size_t);
+	if (value < 0)
+	{
+		op->v_signal = ft_strdup("-");
+		value *= -1;
+	}
+	op->v_value = ft_ullitoa(value);
 }

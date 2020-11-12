@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 09:12:31 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/27 09:28:11 by msales-a         ###   ########.fr       */
+/*   Updated: 2020/10/29 09:28:00 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	parse_specifier(t_print_op *operation)
 	operation->format++;
 	if (!ft_strchr("iduoxXfFeEgGaAcspn%%", *format))
 		return (1);
+	if (ft_isupper(operation->specifier))
+		operation->upper = true;
 	return (0);
 }
 

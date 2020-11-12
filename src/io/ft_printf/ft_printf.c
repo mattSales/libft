@@ -6,51 +6,54 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 17:22:02 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/27 11:31:11 by msales-a         ###   ########.fr       */
+/*   Updated: 2020/10/29 10:20:55 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_printf_putstr(t_print_op *op)
+void	ft_printf_putstr(t_print_op *op, char *printable)
 {
-	char *value;
+	char	*value;
 
-	value = op->value;
+	value = printable;
 	if (value)
 	{
 		while (*value)
 		{
-			if (*value == '_' && op->null_present)
+			if (op->null_present && *value == '_')
 				*value = '\0';
+			if (op->valid && op->upper)
+				*value = ft_toupper(*value);
 			ft_putchar_fd(*(value++), 1);
 			op->print_size++;
 		}
+		free(printable);
 	}
+}
+
+void	ft_printf_print_all(t_print_op *op)
+{
+	ft_printf_putstr(op, op->v_width_p);
+	ft_printf_putstr(op, op->v_signal);
+	ft_printf_putstr(op, op->v_prefix);
+	ft_printf_putstr(op, op->v_width_i);
+	ft_printf_putstr(op, op->v_precision);
+	ft_printf_putstr(op, op->v_value);
+	ft_printf_putstr(op, op->v_suffix);
+	ft_printf_putstr(op, op->v_exponent);
+	ft_printf_putstr(op, op->v_width_s);
 }
 
 int		ft_xprintf(t_print_op *op)
 {
-	char	*temp;
-
-	if (ft_printf_parser(op))
-		ft_printf_specifier(op);
-	else
-		op->value = ft_repeatchr(op->specifier, 1);
+	ft_printf_parser(op);
+	ft_printf_specifier(op);
+	ft_printf_flags(op);
 	ft_printf_precision(op);
 	ft_printf_width(op);
-	ft_printf_flags(op);
-	if (ft_strchr("FEGAX", op->specifier))
-	{
-		temp = ft_strtoupper(op->value);
-		free(op->value);
-		op->value = temp;
-	}
 	if (op->specifier != 'n')
-	{
-		ft_printf_putstr(op);
-		free(op->value);
-	}
+		ft_printf_print_all(op);
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 08:48:44 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/20 09:32:46 by msales-a         ###   ########.fr       */
+/*   Updated: 2020/10/28 15:28:01 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void	ft_spec_per(t_print_op *op)
 {
-	op->value = ft_repeatchr('%', 1);
+	op->v_value = ft_repeatchr('%', 1);
 }

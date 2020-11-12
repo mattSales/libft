@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 09:47:34 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/27 10:57:55 by msales-a         ###   ########.fr       */
+/*   Updated: 2020/10/29 09:05:00 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,21 @@ typedef struct	s_print_op
 	int			precision;
 	char		length;
 	char		specifier;
-	char		*value;
+	char		*v_signal;
+	char		*v_prefix;
+	char		*v_width_p;
+	char		*v_width_i;
+	char		*v_width_s;
+	char		*v_precision;
+	char		*v_value;
+	char		*v_suffix;
+	char		*v_exponent;
 	const char	*format;
 	va_list		*arguments;
 	long long	print_size;
 	bool		null_present;
+	bool		valid;
+	bool		upper;
 }				t_print_op;
 
 # define FLAG_PLUS 1

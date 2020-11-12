@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 07:45:53 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/21 20:36:27 by msales-a         ###   ########.fr       */
+/*   Updated: 2020/10/29 10:23:59 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,71 +14,39 @@
 
 void	ft_printf_flags_plus_space(t_print_op *op)
 {
-	char	*temp;
-
-	if (!ft_strchr("cspn%%", op->specifier))
+	if (!ft_strchr("cspn%%", op->specifier) && op->valid)
 	{
-		if (*op->value != '-')
+		if (!op->v_signal)
 		{
 			if (op->config & FLAG_PLUS)
-				temp = ft_strjoin("+", op->value);
+				op->v_signal = ft_strdup("+");
 			else
-				temp = ft_strjoin(" ", op->value);
-			free(op->value);
-			op->value = temp;
+				op->v_signal = ft_strdup(" ");
 		}
 	}
 }
 
 void	ft_printf_flags_hashtag_base(t_print_op *op)
 {
-	char	*temp;
-
-	if (ft_strchr("oxX", op->specifier))
+	if (ft_strchr("oxX", op->specifier) && *op->v_value != '0')
 	{
 		if (op->specifier == 'o')
-			temp = ft_strjoin("0", op->value);
+			op->v_prefix = ft_strdup("0");
 		if (op->specifier == 'x' || op->specifier == 'X')
-			temp = ft_strjoin("0x", op->value);
-		free(op->value);
-		op->value = temp;
+			op->v_prefix = ft_strdup("0x");
 	}
 }
 
-void	ft_printf_flags_hashtag_dot_f(t_print_op *op)
+void	ft_printf_flags_hashtag_dot(t_print_op *op)
 {
 	char	*temp;
 
-	if (ft_strchr("fF", op->specifier) && !ft_strchr(op->value, '.'))
+	if (ft_strchr("aAeEgGfF", op->specifier) && !ft_strchr(op->v_value, '.'))
 	{
-		temp = ft_strjoin(op->value, ".");
-		free(op->value);
-		op->value = temp;
+		temp = ft_strjoin(op->v_value, ".");
+		free(op->v_value);
+		op->v_value = temp;
 	}
-}
-
-int		ft_printf_flags_hashtag_dot_aeg(t_print_op *op)
-{
-	char	*ptr;
-	char	*temp;
-	char	*result;
-	int		index;
-
-	if (ft_strchr(op->value, '.') || !ft_strchr("aAeEgG", op->specifier))
-		return (0);
-	ptr = NULL;
-	index = 0;
-	while ("pe"[index] && !ptr)
-		ptr = ft_strchr(op->value, "pe"[index++]);
-	if (!ptr)
-		ptr = ft_strchr(op->value, '\0');
-	temp = ft_substr(op->value, 0, ptr - op->value);
-	result = ft_strjoin(temp, ".");
-	ptr = ft_strjoin(result, ptr);
-	free(op->value);
-	free(temp);
-	op->value = ptr;
-	return (0);
 }
 
 void	ft_printf_flags(t_print_op *op)
@@ -88,7 +56,6 @@ void	ft_printf_flags(t_print_op *op)
 	if (op->config & FLAG_HASHTAG)
 	{
 		ft_printf_flags_hashtag_base(op);
-		ft_printf_flags_hashtag_dot_f(op);
-		ft_printf_flags_hashtag_dot_aeg(op);
+		ft_printf_flags_hashtag_dot(op);
 	}
 }

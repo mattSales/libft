@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 14:43:37 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/22 18:01:26 by msales-a         ###   ########.fr       */
+/*   Updated: 2020/10/29 08:29:25 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,27 @@
 
 void	ft_printf_precision_diuox(t_print_op *op)
 {
-	int		value;
-	char	*width;
-	char	*temp;
+	int		length;
 
-	value = op->precision - ft_strlen(op->value) + (*op->value == '-');
-	width = ft_repeatchr('0', value);
-	if (op->precision == 0 && *op->value == '0')
-		temp = ft_strjoin(width, width);
-	else if (*op->value == '-')
-	{
-		*op->value = '0';
-		temp = ft_strjoin(width, op->value);
-		*temp = '-';
-	}
+	if (op->precision == 0 && *op->v_value == '0')
+		*op->v_value = '\0';
 	else
-		temp = ft_strjoin(width, op->value);
-	free(op->value);
-	free(width);
-	op->value = temp;
+	{
+		length = op->precision - ft_strlen(op->v_value);
+		op->v_precision = ft_repeatchr('0', length);
+	}
 }
 
 void	ft_printf_precision_s(t_print_op *op)
 {
 	char	*temp;
 
-	temp = ft_substr(op->value, 0, op->precision);
-	free(op->value);
-	op->value = temp;
+	if ((size_t)op->precision < ft_strlen(op->v_value))
+	{
+		temp = ft_substr(op->v_value, 0, op->precision);
+		free(op->v_value);
+		op->v_value = temp;
+	}
 }
 
 void	ft_printf_precision(t_print_op *op)

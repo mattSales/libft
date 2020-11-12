@@ -7,4 +7,5 @@ main.c
 libftprintf.a
 tests
 *.txt
-a.out.dSYM
+a.out.dSYMpft/
+pft/

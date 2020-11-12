@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 08:50:00 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/21 14:32:32 by msales-a         ###   ########.fr       */
+/*   Updated: 2020/10/29 21:09:38 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ void	ft_spec_per(t_print_op *op);
 void	ft_spec_s(t_print_op *op);
 void	ft_spec_u(t_print_op *op);
 void	ft_spec_x(t_print_op *op);
+void	ft_spec_e_helper(t_print_op *op);
 
 #endif

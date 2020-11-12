@@ -6,32 +6,45 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 09:32:44 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/21 20:01:48 by msales-a         ###   ########.fr       */
+/*   Updated: 2020/11/12 18:20:54 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "string.h"
 
-char	*ft_ftoa(long double number, int precision)
+long long int	ft_ftoa_pvalue(double n, int p, int *s, int *l)
 {
-	long long	value;
-	size_t		length;
-	char		*result;
+	long long int	value;
+
+	value = n * ft_pow(10, p + 1);
+	if ((value % 10 < -4) || (value % 10 > 4))
+		value = ((value / 10) + ((value / 10) % 2));
+	else
+		value = (value / 10);
+	*s = ft_hexfloat_signal(n);
+	*l = ft_algs_num(value * ft_pow(10, p * -1)) + (p != 0) + p;
+	return (value);
+}
+
+char			*ft_ftoa(double number, int precision)
+{
+	int				signal;
+	long long int	value;
+	int				length;
+	char			*temp;
 
 	precision = (precision < 0) ? 0 : precision;
-	value = (long long)(number * ft_pow(10, precision + 1));
-	value = ((value / 10) + (value % 10 >= 5)) * ((number < 0) ? -1 : 1);
-	length = (number < 0) + (precision != 0) + ft_algs_num(value) + 1;
-	if (!(result = malloc(sizeof(char) * length)))
+	value = ft_abs(ft_ftoa_pvalue(number, precision, &signal, &length));
+	if (!(temp = malloc(sizeof(char) * (signal + length + 1))))
 		return (NULL);
-	result[0] = '-';
-	result[--length] = '\0';
-	while (value)
+	temp[0] = '-';
+	temp[signal + length] = '\0';
+	while (length--)
 	{
-		result[--length] = (value % 10) + '0';
+		temp[signal + length] = value % 10 + '0';
 		value /= 10;
 		if (--precision == 0)
-			result[--length] = '.';
+			temp[signal + --length] = '.';
 	}
-	return (result);
+	return (temp);
 }

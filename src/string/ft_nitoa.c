@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtoupper.c                                    :+:      :+:    :+:   */
+/*   ft_nitoa.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/21 16:12:50 by msales-a          #+#    #+#             */
-/*   Updated: 2020/11/12 18:22:27 by msales-a         ###   ########.fr       */
+/*   Created: 2020/10/29 09:59:41 by msales-a          #+#    #+#             */
+/*   Updated: 2020/11/12 18:22:07 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "string.h"
 
-char	*ft_strtoupper(char *str)
+char	*ft_nitoa(char size, int value)
 {
-	char	*temp;
-	int		index;
+	int		length;
+	char	*result;
 
-	index = ft_strlen(str);
-	if (!(temp = malloc(sizeof(char) * (index + 1))))
+	length = ft_algs_num(value);
+	if (length < size)
+		length = size;
+	if (!(result = malloc(sizeof(char) * (length + 2))))
 		return (NULL);
-	temp[index] = '\0';
-	index = 0;
-	while (str[index])
+	result[length + 1] = '\0';
+	result[0] = (value < 0) ? '-' : '+';
+	value *= (value < 0) ? -1 : 1;
+	while (length)
 	{
-		temp[index] = ft_toupper(str[index]);
-		index++;
+		result[length--] = value % 10 + '0';
+		value /= 10;
 	}
-	return (temp);
+	return (result);
 }
