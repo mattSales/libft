@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 20:43:44 by msales-a          #+#    #+#             */
-/*   Updated: 2020/11/12 18:24:02 by msales-a         ###   ########.fr       */
+/*   Updated: 2020/11/21 14:24:57 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,11 @@ char	*ft_hexfloat_mantissa(double number, int precision)
 
 	n = (unsigned long long int*)&number;
 	mantissa = *n & 0x000FFFFFFFFFFFFF;
+	if (number == 0. / 0.)
+		return (ft_strdup("nan"));
+	if (number == -1. / 0.)
+		return (ft_strdup("-inf"));
+	if (number == 1. / 0.)
+		return (ft_strdup("inf"));
 	return (ft_hexfloat_mantissa_(mantissa, precision));
 }

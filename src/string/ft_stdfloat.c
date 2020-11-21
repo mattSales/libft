@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 11:45:50 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/30 11:17:01 by msales-a         ###   ########.fr       */
+/*   Updated: 2020/11/21 15:08:04 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,13 @@ char	*ft_stdfloat_num(long double number, int precision)
 	value = number * ft_pow(10, exp);
 	result = ft_ftoa(value, precision);
 	return (result);
+}
+
+char	*ft_stdfloat_limits(long double number)
+{
+	if (number == (-1. / 0.))
+		return (ft_strdup("-inf"));
+	if (number == (1. / 0.))
+		return (ft_strdup("inf"));
+	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 08:48:44 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/29 22:35:43 by msales-a         ###   ########.fr       */
+/*   Updated: 2020/11/21 14:23:01 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,12 @@ void	ft_spec_e(t_print_op *op)
 		op->v_signal = ft_strdup("-");
 		n *= -1;
 	}
-	op->v_value = ft_stdfloat_num(n, p);
-	op->v_suffix = ft_strdup("e");
-	op->v_exponent = ft_nitoa(2, ft_stdfloat_exp(n));
-	ft_spec_e_helper(op);
+	op->v_value = ft_stdfloat_limits(n);
+	if (!op->v_value)
+	{
+		op->v_value = ft_stdfloat_num(n, p);
+		op->v_suffix = ft_strdup("e");
+		op->v_exponent = ft_nitoa(2, ft_stdfloat_exp(n));
+		ft_spec_e_helper(op);
+	}
 }
