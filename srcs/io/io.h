@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/23 09:33:04 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/19 16:51:15 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/02/28 15:22:38 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../libft.h"
 # include "ft_printf/ft_printf.h"
+# include "get_next_line/get_next_line.h"
 
 # include <unistd.h>
 

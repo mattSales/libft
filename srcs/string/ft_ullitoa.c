@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 13:22:28 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/18 23:19:29 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/02/28 15:26:22 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@ char	*ft_ullitoa(unsigned long long n)
 	char				*str;
 
 	v = n;
-	s = (v < 0) ? 1 : 0;
-	v = (v < 0) ? -v : v;
+	s = 0;
 	index = ft_algs_num(v);
 	if (v == 0)
 		return (ft_strdup("0"));
