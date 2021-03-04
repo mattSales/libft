@@ -6,20 +6,11 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 07:41:26 by msales-a          #+#    #+#             */
-/*   Updated: 2020/12/27 18:09:03 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/03/03 22:10:36 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-char	*ft_strchr(char const *str, int c)
-{
-	if (!str)
-		return (0);
-	while (*str != c && *str != '\0')
-		str++;
-	return ((char *)str);
-}
 
 int		buffer_load(int fd, char **buffer)
 {
