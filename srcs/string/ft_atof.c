@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 21:05:26 by msales-a          #+#    #+#             */
-/*   Updated: 2021/04/27 21:07:22 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/04/27 21:52:42 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,10 @@ double		ft_atof(char *input)
 	if (!temp || *temp != '.')
 		return (i);
 	d = ft_atoill(temp + 1);
-	return (i + d / ft_pow(10, ft_algs_num(d)));
+	d = d / ft_pow(10, ft_algs_num(d));
+	if (d < 0)
+		d = 0;
+	if (i < 0)
+		return (i - d);
+	return (i + d);
 }
