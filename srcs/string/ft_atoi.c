@@ -6,13 +6,13 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 10:19:33 by msales-a          #+#    #+#             */
-/*   Updated: 2020/05/23 10:42:49 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/04/27 21:03:46 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "string.h"
 
-int	ft_atoi(char const *str)
+long long	ft_atoill(char const *str)
 {
 	int			s;
 	long long	n;
@@ -36,4 +36,9 @@ int	ft_atoi(char const *str)
 		p = n;
 	}
 	return (s * n);
+}
+
+int			ft_atoi(char const *str)
+{
+	return ((int)ft_atoill(str));
 }
