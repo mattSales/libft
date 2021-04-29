@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 07:41:26 by msales-a          #+#    #+#             */
-/*   Updated: 2021/04/28 22:53:04 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/04/28 23:29:51 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int		buffer_discharge(char **buffer, char **line)
 		free(*buffer);
 		*buffer = NULL;
 	}
-	return (bsize - length > 0);
+	return (bsize - ft_abs(length) > 0);
 }
 
 int		get_next_line(int fd, char **line)
