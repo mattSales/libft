@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 07:41:26 by msales-a          #+#    #+#             */
-/*   Updated: 2021/04/28 23:29:51 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/05/01 13:50:37 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int		get_next_line(int fd, char **line)
 	if (!line || 0 > fd || fd >= OPEN_MAX || BUFFER_SIZE <= 0)
 		return (-1);
 	length = 0;
-	while (!buffer[fd] || *ft_strchr(buffer[fd], '\n') != '\n')
+	while (!buffer[fd] || !ft_strchr(buffer[fd], '\n'))
 	{
 		if ((length = buffer_load(fd, &buffer[fd])) == -1)
 			return (-1);
