@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/23 09:32:56 by msales-a          #+#    #+#             */
-/*   Updated: 2021/04/27 21:06:48 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/05/01 13:54:35 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ char		*ft_strchr(char const *s, int c);
 char		*ft_strrchr(char const *s, int c);
 char		*ft_strnstr(char const *big, char const *little, size_t len);
 int			ft_strncmp(char const *s1, char const *s2, size_t n);
+int			ft_strcmp(char const *s1, char const *s2);
 long long	ft_atoill(char const *str);
 int			ft_atoi(char const *str);
 double		ft_atof(char *input);
