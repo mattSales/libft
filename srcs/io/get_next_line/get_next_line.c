@@ -6,26 +6,35 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 07:41:26 by msales-a          #+#    #+#             */
-/*   Updated: 2021/05/01 13:50:37 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/05/08 19:00:03 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int		buffer_load(int fd, char **buffer)
+static char	*ft_strchr_(char const *str, int c)
+{
+	if (!str)
+		return (0);
+	while (*str != c && *str != '\0')
+		str++;
+	return ((char *)str);
+}
+
+static int		buffer_load_(int fd, char **buffer)
 {
 	char	*temp_read;
 	char	*temp_buffer;
 	int		length;
 
 	if (!*buffer)
-		*buffer = ft_strdup("");
+		*buffer = ft_strdup_("");
 	if ((temp_read = malloc(sizeof(char) * (BUFFER_SIZE + 1))) == 0)
 		return (-1);
 	if ((length = read(fd, temp_read, BUFFER_SIZE)) == -1)
 		return (-1);
 	temp_read[length] = '\0';
-	if ((temp_buffer = ft_strjoin(*buffer, temp_read)) == 0)
+	if ((temp_buffer = ft_strjoin_(*buffer, temp_read)) == 0)
 		return (-1);
 	free(*buffer);
 	free(temp_read);
@@ -33,7 +42,7 @@ int		buffer_load(int fd, char **buffer)
 	return (length);
 }
 
-int		buffer_discharge(char **buffer, char **line)
+static int		buffer_discharge_(char **buffer, char **line)
 {
 	int		length;
 	int		bsize;
@@ -41,13 +50,13 @@ int		buffer_discharge(char **buffer, char **line)
 
 	if (!*buffer)
 	{
-		*line = ft_strdup("");
+		*line = ft_strdup_("");
 		return (0);
 	}
-	bsize = ft_strlen(*buffer);
-	length = ft_strchr(*buffer, '\n') - *buffer;
-	*line = ft_substr(*buffer, 0, length);
-	temp = ft_substr(*buffer, length + 1, ft_strlen(*buffer));
+	bsize = ft_strlen_(*buffer);
+	length = ft_strchr_(*buffer, '\n') - *buffer;
+	*line = ft_substr_(*buffer, 0, length);
+	temp = ft_substr_(*buffer, length + 1, ft_strlen_(*buffer));
 	free(*buffer);
 	*buffer = temp;
 	if (**buffer == '\0')
@@ -55,7 +64,7 @@ int		buffer_discharge(char **buffer, char **line)
 		free(*buffer);
 		*buffer = NULL;
 	}
-	return (bsize - ft_abs(length) > 0);
+	return (bsize - length);
 }
 
 int		get_next_line(int fd, char **line)
@@ -66,14 +75,14 @@ int		get_next_line(int fd, char **line)
 	if (!line || 0 > fd || fd >= OPEN_MAX || BUFFER_SIZE <= 0)
 		return (-1);
 	length = 0;
-	while (!buffer[fd] || !ft_strchr(buffer[fd], '\n'))
+	while (!buffer[fd] || *ft_strchr_(buffer[fd], '\n') != '\n')
 	{
-		if ((length = buffer_load(fd, &buffer[fd])) == -1)
+		if ((length = buffer_load_(fd, &buffer[fd])) == -1)
 			return (-1);
 		if (length < BUFFER_SIZE)
 			break ;
 	}
-	if (!buffer_discharge(&buffer[fd], line) && length < BUFFER_SIZE)
+	if (!buffer_discharge_(&buffer[fd], line) && length < BUFFER_SIZE)
 		return (0);
 	return (1);
 }
