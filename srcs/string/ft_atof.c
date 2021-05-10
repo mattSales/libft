@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 21:05:26 by msales-a          #+#    #+#             */
-/*   Updated: 2021/05/09 21:41:30 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/05/09 23:30:46 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,6 @@ double	ft_atof(char *input)
 	if (!ft_isdigit(*(temp + 1)))
 		d = 0;
 	if (i < 0)
-		return (i - d);
+		d *= -1;
 	return (i + d);
 }
