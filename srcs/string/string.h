@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/23 09:32:56 by msales-a          #+#    #+#             */
-/*   Updated: 2021/05/09 22:27:56 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/05/10 09:40:02 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,6 @@ char		*ft_stdfloat_num(long double number, int precision);
 char		*ft_nitoa(char size, int value);
 char		*ft_stdfloat_limits(long double number);
 char		*ft_strreplace_all(char old, char new, char *src);
+int			ft_count_segment(char const *str, char c);
 
 #endif
