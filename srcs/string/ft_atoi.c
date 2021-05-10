@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 10:19:33 by msales-a          #+#    #+#             */
-/*   Updated: 2021/04/27 21:03:46 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/05/09 21:58:04 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,22 @@ long long	ft_atoill(char const *str)
 		str++;
 	if (*str == '-' || *str == '+')
 	{
-		s = (*str == '-') ? -1 : 1;
+		s = 1;
+		if (*str == '-')
+			s = -1;
 		str++;
 	}
 	while (ft_isdigit(*str))
 	{
 		n = (n * 10) + (*(str++) - '0');
 		if (p > n)
-			return ((s == -1) ? 0 : -1);
+			return (!(s == -1) * -1);
 		p = n;
 	}
 	return (s * n);
 }
 
-int			ft_atoi(char const *str)
+int	ft_atoi(char const *str)
 {
 	return ((int)ft_atoill(str));
 }

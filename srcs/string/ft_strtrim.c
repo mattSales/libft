@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 11:52:46 by msales-a          #+#    #+#             */
-/*   Updated: 2020/05/23 10:43:52 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/05/09 22:02:11 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 char	*ft_strtrim(char const *s, char const *set)
 {
-	int index;
-	int start;
-	int end;
+	int	index;
+	int	start;
+	int	end;
 
 	if (!s || !set)
 		return (0);

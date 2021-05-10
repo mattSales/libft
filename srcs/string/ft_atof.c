@@ -6,13 +6,13 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 21:05:26 by msales-a          #+#    #+#             */
-/*   Updated: 2021/04/27 21:57:03 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/05/09 21:41:30 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "string.h"
 
-static void ft_atof_edge_cases(char *input, double *output)
+static void	ft_atof_edge_cases(char *input, double *output)
 {
 	char	*upper;
 	char	*trim;
@@ -41,7 +41,7 @@ static bool	ft_atof_has_digit(char *input)
 	return (false);
 }
 
-double		ft_atof(char *input)
+double	ft_atof(char *input)
 {
 	double	i;
 	double	d;

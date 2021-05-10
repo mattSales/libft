@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 08:48:44 by msales-a          #+#    #+#             */
-/*   Updated: 2020/11/21 15:01:17 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/05/09 21:14:34 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_spec_f(t_print_op *op)
 {
-	long double value;
+	long double	value;
 	size_t		length;
 	int			p;
 
@@ -22,7 +22,9 @@ void	ft_spec_f(t_print_op *op)
 		value = va_arg(*op->arguments, long double);
 	else
 		value = va_arg(*op->arguments, double);
-	p = (op->config & HAS_PRECISION) ? op->precision : 6;
+	p = 6;
+	if (op->config & HAS_PRECISION)
+		p = op->precision;
 	op->v_value = ft_stdfloat_limits(value);
 	if (!op->v_value)
 	{

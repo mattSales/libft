@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 13:29:38 by msales-a          #+#    #+#             */
-/*   Updated: 2020/05/23 10:45:33 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/05/09 22:00:08 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	if (!s || !f)
 		return (0);
 	index = 0;
-	if (!(dst = (char*)malloc(sizeof(char) * (ft_strlen(s) + 1))))
+	dst = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (!dst)
 		return (0);
 	while (s[index])
 	{

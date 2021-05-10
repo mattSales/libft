@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 09:47:34 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/29 09:05:00 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/05/09 21:02:24 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "printf.h"
 # include <stdbool.h>
 
-typedef struct	s_print_op
+typedef struct s_print_op
 {
 	int			config;
 	int			width;
@@ -48,7 +48,7 @@ typedef struct	s_print_op
 # define HAS_WIDTH 32
 # define HAS_PRECISION 64
 
-typedef enum	e_plength
+typedef enum e_plength
 {
 	plength_none = 0,
 	plength_hh = 1,
@@ -59,7 +59,6 @@ typedef enum	e_plength
 	plength_z = 5,
 	plength_t = 6,
 	plength_L = 7,
-
 }				t_plength;
 
 #endif

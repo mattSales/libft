@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 09:12:31 by msales-a          #+#    #+#             */
-/*   Updated: 2020/11/20 23:26:15 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/05/09 21:00:26 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	parse_length(t_print_op *operation)
 	char	**lengths;
 
 	index = 1;
-	lengths = (char*[9]){"hh", "h", "ll", "l", "j", "z", "t", "L", NULL};
+	lengths = (char *[9]){"hh", "h", "ll", "l", "j", "z", "t", "L", NULL};
 	while (*lengths)
 	{
 		if (!ft_strncmp(*lengths, operation->format, ft_strlen(*lengths)))
@@ -49,7 +49,7 @@ int	parse_length(t_print_op *operation)
 
 int	parse_precision(t_print_op *operation)
 {
-	const char *format;
+	const char	*format;
 
 	format = operation->format;
 	if (*format != '.')
@@ -69,7 +69,7 @@ int	parse_precision(t_print_op *operation)
 
 int	parse_width(t_print_op *operation)
 {
-	const char *format;
+	const char	*format;
 
 	format = operation->format;
 	if (*format != '*' && !ft_isdigit(*format))
@@ -91,7 +91,7 @@ int	parse_width(t_print_op *operation)
 
 int	parse_flags(t_print_op *operation)
 {
-	const char *format;
+	const char	*format;
 
 	format = operation->format;
 	while (ft_strchr("-+ #0", *format))

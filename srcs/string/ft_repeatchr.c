@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 23:08:45 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/27 10:30:33 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/05/09 21:38:09 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 char	*ft_repeatchr(unsigned char c, int times)
 {
-	unsigned char *result;
+	unsigned char	*result;
 
-	times = (times < 0) ? 0 : times;
+	if (times < 0)
+		times = 0;
 	result = ft_calloc(times + 1, sizeof(unsigned char));
 	ft_memset(result, c, times);
-	return ((char*)result);
+	return ((char *)result);
 }

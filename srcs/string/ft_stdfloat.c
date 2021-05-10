@@ -6,18 +6,20 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 11:45:50 by msales-a          #+#    #+#             */
-/*   Updated: 2020/11/21 15:08:04 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/05/09 21:36:17 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "string.h"
 
-int		ft_stdfloat_exp(double number)
+int	ft_stdfloat_exp(double number)
 {
 	double	value;
 	int		index;
 
-	value = (number < 0) ? number * -1 : number;
+	value = number;
+	if (number < 0)
+		value *= -1;
 	index = 0;
 	if (value == 0)
 		return (index);

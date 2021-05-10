@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 17:22:02 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/29 10:20:55 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/05/09 21:01:31 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_printf_print_all(t_print_op *op)
 	ft_printf_putstr(op, op->v_width_s);
 }
 
-int		ft_xprintf(t_print_op *op)
+int	ft_xprintf(t_print_op *op)
 {
 	ft_printf_parser(op);
 	ft_printf_specifier(op);
@@ -57,9 +57,9 @@ int		ft_xprintf(t_print_op *op)
 	return (1);
 }
 
-int		ft_vprintf(const char *format, va_list *arguments)
+int	ft_vprintf(const char *format, va_list *arguments)
 {
-	t_print_op op;
+	t_print_op	op;
 
 	if (!format || !arguments)
 		return (0);
@@ -80,9 +80,9 @@ int		ft_vprintf(const char *format, va_list *arguments)
 	return (op.print_size);
 }
 
-int		ft_printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
-	va_list arguments;
+	va_list	arguments;
 	int		index;
 
 	if (!format)

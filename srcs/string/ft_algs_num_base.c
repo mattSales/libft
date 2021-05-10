@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/23 09:25:32 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/20 15:10:57 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/05/09 21:33:06 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ int	ft_algs_num_base(long long number, unsigned int radix)
 	if (!number)
 		return (1);
 	algs = 0;
-	num = number < 0 ? -1 * number : number;
+	num = number;
+	if (number < 0)
+		num *= 1;
 	while (num)
 	{
 		algs++;

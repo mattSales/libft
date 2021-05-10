@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 18:19:41 by msales-a          #+#    #+#             */
-/*   Updated: 2020/05/23 10:48:04 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/05/09 21:20:27 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_memcmp(void const *s1, void const *s2, size_t n)
 {
-	unsigned char const *ps1;
-	unsigned char const *ps2;
+	unsigned char const	*ps1;
+	unsigned char const	*ps2;
 
 	if (!n)
 		return (0);

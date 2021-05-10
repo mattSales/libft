@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 11:42:28 by msales-a          #+#    #+#             */
-/*   Updated: 2020/05/23 10:44:59 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/05/09 21:23:49 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (0);
 	s1_len = ft_strlen(s1);
 	s2_len = ft_strlen(s2);
-	if (!(dst = (char*)ft_calloc((s1_len + s2_len + 1), sizeof(char))))
+	dst = (char *)ft_calloc((s1_len + s2_len + 1), sizeof(char));
+	if (!dst)
 		return (ft_strdup(""));
 	ft_strlcpy(dst, s1, s1_len + 1);
 	ft_strlcat(dst, s2, s1_len + s2_len + 1);

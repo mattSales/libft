@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 09:32:44 by msales-a          #+#    #+#             */
-/*   Updated: 2020/11/21 14:24:48 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/05/09 21:35:26 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,18 @@ long long int	ft_ftoa_pvalue(double n, int p, int *s, int *l)
 	return (value);
 }
 
-char			*ft_ftoa_num(long double number, int precision)
+char	*ft_ftoa_num(long double number, int precision)
 {
 	int				signal;
 	long long int	value;
 	int				length;
 	char			*temp;
 
-	precision = (precision < 0) ? 0 : precision;
+	if (precision < 0)
+		precision = 0;
 	value = ft_abs(ft_ftoa_pvalue(number, precision, &signal, &length));
-	if (!(temp = malloc(sizeof(char) * (signal + length + 1))))
+	temp = malloc(sizeof(char) * (signal + length + 1));
+	if (!temp)
 		return (NULL);
 	temp[0] = '-';
 	temp[signal + length] = '\0';
@@ -52,7 +54,7 @@ char			*ft_ftoa_num(long double number, int precision)
 	return (temp);
 }
 
-char			*ft_ftoa(long double number, int precision)
+char	*ft_ftoa(long double number, int precision)
 {
 	if (number == 0. / 0.)
 		return (ft_strdup("nan"));

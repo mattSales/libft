@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/15 20:30:23 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/16 11:08:21 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/05/09 21:50:47 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,13 @@ char	*ft_llitoabase(long long number, char const *base)
 	char		*dst;
 	long long	value;
 
-	if (!base || !(radix = ft_strlen(base)))
+	radix = ft_strlen(base);
+	if (!base || !radix)
 		return (0);
-	value = number < 0 ? -1 * number : number;
-	index = ft_algs_num_base(number, radix) + (number < 0 ? 1 : 0);
-	if (!(dst = malloc(sizeof(char) * (index + 1))))
+	value = ft_abs(number);
+	index = ft_algs_num_base(number, radix) + (number < 0);
+	dst = malloc(sizeof(char) * (index + 1));
+	if (!dst)
 		return (0);
 	dst[index--] = '\0';
 	dst[0] = '-';

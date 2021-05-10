@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/15 13:14:26 by msales-a          #+#    #+#             */
-/*   Updated: 2020/11/12 18:15:13 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/05/09 21:02:00 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_printf_parser_cleaner(t_print_op *operation)
 	operation->upper = false;
 }
 
-int		ft_printf_parser(t_print_op *operation)
+int	ft_printf_parser(t_print_op *operation)
 {
 	if (*operation->format == '%')
 		operation->format++;

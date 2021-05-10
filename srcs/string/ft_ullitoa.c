@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 13:22:28 by msales-a          #+#    #+#             */
-/*   Updated: 2021/02/28 15:26:22 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/05/09 22:02:08 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ char	*ft_ullitoa(unsigned long long n)
 	index = ft_algs_num(v);
 	if (v == 0)
 		return (ft_strdup("0"));
-	if (!(str = (char*)malloc(sizeof(char) * (index + s + 1))))
+	str = (char *)malloc(sizeof(char) * (index + s + 1));
+	if (!str)
 		return (0);
 	str[0] = '-';
 	str[index + s] = '\0';

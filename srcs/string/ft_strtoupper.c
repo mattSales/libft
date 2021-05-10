@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 16:12:50 by msales-a          #+#    #+#             */
-/*   Updated: 2020/11/12 18:22:27 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/05/09 21:37:19 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ char	*ft_strtoupper(char *str)
 	int		index;
 
 	index = ft_strlen(str);
-	if (!(temp = malloc(sizeof(char) * (index + 1))))
+	temp = malloc(sizeof(char) * (index + 1));
+	if (!temp)
 		return (NULL);
 	temp[index] = '\0';
 	index = 0;

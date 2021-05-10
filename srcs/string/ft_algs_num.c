@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 19:16:33 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/20 15:11:05 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/05/09 21:58:43 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 int	ft_algs_num(long long n)
 {
-	int algs;
+	int	algs;
 
-	n = (n < 0) ? -n : n;
+	if (n < 0)
+		n *= -1;
 	algs = 1;
 	while (n > 9)
 	{

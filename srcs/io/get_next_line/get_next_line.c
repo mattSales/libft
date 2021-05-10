@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 07:41:26 by msales-a          #+#    #+#             */
-/*   Updated: 2021/05/08 19:00:03 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/05/09 20:56:30 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static char	*ft_strchr_(char const *str, int c)
 	return ((char *)str);
 }
 
-static int		buffer_load_(int fd, char **buffer)
+static int	buffer_load_(int fd, char **buffer)
 {
 	char	*temp_read;
 	char	*temp_buffer;
@@ -29,12 +29,15 @@ static int		buffer_load_(int fd, char **buffer)
 
 	if (!*buffer)
 		*buffer = ft_strdup_("");
-	if ((temp_read = malloc(sizeof(char) * (BUFFER_SIZE + 1))) == 0)
+	temp_read = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (temp_read == 0)
 		return (-1);
-	if ((length = read(fd, temp_read, BUFFER_SIZE)) == -1)
+	length = read(fd, temp_read, BUFFER_SIZE);
+	if (length == -1)
 		return (-1);
 	temp_read[length] = '\0';
-	if ((temp_buffer = ft_strjoin_(*buffer, temp_read)) == 0)
+	temp_buffer = ft_strjoin_(*buffer, temp_read);
+	if (temp_buffer == 0)
 		return (-1);
 	free(*buffer);
 	free(temp_read);
@@ -42,7 +45,7 @@ static int		buffer_load_(int fd, char **buffer)
 	return (length);
 }
 
-static int		buffer_discharge_(char **buffer, char **line)
+static int	buffer_discharge_(char **buffer, char **line)
 {
 	int		length;
 	int		bsize;
@@ -67,7 +70,7 @@ static int		buffer_discharge_(char **buffer, char **line)
 	return (bsize - length);
 }
 
-int		get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
 	static char	*buffer[OPEN_MAX];
 	int			length;
@@ -77,7 +80,8 @@ int		get_next_line(int fd, char **line)
 	length = 0;
 	while (!buffer[fd] || *ft_strchr_(buffer[fd], '\n') != '\n')
 	{
-		if ((length = buffer_load_(fd, &buffer[fd])) == -1)
+		length = buffer_load_(fd, &buffer[fd]);
+		if (length == -1)
 			return (-1);
 		if (length < BUFFER_SIZE)
 			break ;

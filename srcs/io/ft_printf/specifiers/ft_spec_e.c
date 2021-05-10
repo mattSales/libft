@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 08:48:44 by msales-a          #+#    #+#             */
-/*   Updated: 2020/11/21 14:23:01 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/05/09 21:13:47 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,16 @@ void	ft_spec_e_helper(t_print_op *op)
 
 void	ft_spec_e(t_print_op *op)
 {
-	long double n;
+	long double	n;
 	int			p;
 
 	if (op->length == plength_L)
 		n = va_arg(*op->arguments, long double);
 	else
 		n = va_arg(*op->arguments, double);
-	p = (op->config & HAS_PRECISION) ? op->precision : 6;
+	p = 6;
+	if (op->config & HAS_PRECISION)
+		p = op->precision;
 	if (ft_hexfloat_signal(n))
 	{
 		op->v_signal = ft_strdup("-");

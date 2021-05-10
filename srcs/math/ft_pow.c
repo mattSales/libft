@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 23:24:35 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/29 15:56:28 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/05/09 21:17:30 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 double	ft_pow(double x, double y)
 {
-	long double n;
+	long double	n;
 
 	n = 1;
 	if (y < 0)

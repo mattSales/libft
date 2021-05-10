@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 11:22:11 by msales-a          #+#    #+#             */
-/*   Updated: 2020/05/23 10:43:40 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/05/09 21:44:34 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (0);
 	if (ft_strlen(s) <= start)
 		return (ft_strdup(""));
-	if (!(dest = (char*)malloc(sizeof(char) * (len + 1))))
+	dest = (char *)malloc(sizeof(char) * (len + 1));
+	if (!dest)
 		return (0);
 	index = 0;
 	while (s[start + index] && index < (int)len)

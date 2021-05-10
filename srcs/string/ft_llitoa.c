@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 13:22:28 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/16 11:01:41 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/05/09 22:01:27 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ char	*ft_llitoa(long long n)
 	int			index;
 	char		*str;
 
-	v = n;
-	s = (v < 0) ? 1 : 0;
-	v = (v < 0) ? -v : v;
+	s = (n < 0);
+	v = ft_abs(n);
 	index = ft_algs_num(v);
 	if (v == 0)
 		return (ft_strdup("0"));
-	if (!(str = (char*)malloc(sizeof(char) * (index + s + 1))))
+	str = (char *)malloc(sizeof(char) * (index + s + 1));
+	if (!str)
 		return (0);
 	str[0] = '-';
 	str[index + s] = '\0';

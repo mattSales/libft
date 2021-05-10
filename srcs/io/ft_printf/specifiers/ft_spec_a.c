@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 08:48:44 by msales-a          #+#    #+#             */
-/*   Updated: 2020/11/21 14:26:27 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/05/09 21:06:45 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,16 @@ void	ft_spec_a(t_print_op *op)
 			p = op->precision;
 		else
 			p = ft_hexfloat_precision(value);
-		op->v_signal = (ft_hexfloat_signal(value)) ? ft_strdup("-") : NULL;
+		op->v_signal = NULL;
+		if (ft_hexfloat_signal(value))
+			op->v_signal = ft_strdup("-");
 		op->v_prefix = ft_strdup("0x");
 		op->v_value = ft_hexfloat_mantissa(value, p);
 		exp = ft_hexfloat_exp(value);
-		op->v_suffix = ft_strdup((exp < 0) ? "p-" : "p+");
+		if (exp < 0)
+			op->v_suffix = ft_strdup("p-");
+		else
+			op->v_suffix = ft_strdup("p+");
 		op->v_exponent = ft_itoa(exp);
 	}
 }
