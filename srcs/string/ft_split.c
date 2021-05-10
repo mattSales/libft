@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 12:08:10 by msales-a          #+#    #+#             */
-/*   Updated: 2021/05/09 22:05:05 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/05/09 22:41:46 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,11 +83,11 @@ char	**ft_split(char const *s, char c)
 	int		index;
 
 	if (!s)
-		return (0);
+		return (NULL);
 	index = ft_count_segment(s, c);
 	strs = (char **)ft_calloc((index + 1), sizeof(char *));
-	if (strs)
-		return (0);
+	if (!strs)
+		return (NULL);
 	strs[index] = 0;
 	index = 0;
 	while (*s)
