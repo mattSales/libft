@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 12:08:10 by msales-a          #+#    #+#             */
-/*   Updated: 2021/05/09 22:41:46 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/05/10 09:36:07 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_count_segment(char const *str, char c)
 	int	segments;
 
 	segments = 0;
-	while (*str)
+	while (str && *str)
 	{
 		while (*str == c && *str)
 			str++;
@@ -38,13 +38,13 @@ char	*ft_norepeat(char const *str, char const *repeating)
 	len = 0;
 	index = 0;
 	ptr = (char *)str;
-	while (*ptr)
+	while (ptr && *ptr)
 	{
-		len += (*ptr != *(ptr + 1) || !ft_strchr(repeating, *ptr));
+		len += ((*ptr != *(ptr + 1) || !ft_strchr(repeating, *ptr)));
 		ptr++;
 	}
 	ptr = (char *)malloc(sizeof(char) * len);
-	while (*str)
+	while (str && *str)
 	{
 		if (*str != *(str + 1) || !ft_strchr(repeating, *str))
 			ptr[index++] = *str;
