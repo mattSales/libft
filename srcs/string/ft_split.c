@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/25 12:08:10 by msales-a          #+#    #+#             */
-/*   Updated: 2021/05/10 09:36:07 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/05/10 10:41:34 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,17 +80,18 @@ const char	*ft_strtok(char **dst, char const *src, char d)
 char	**ft_split(char const *s, char c)
 {
 	char	**strs;
+	int		argc;
 	int		index;
 
 	if (!s)
 		return (NULL);
-	index = ft_count_segment(s, c);
-	strs = (char **)ft_calloc((index + 1), sizeof(char *));
+	argc = ft_count_segment(s, c);
+	strs = (char **)ft_calloc((argc + 1), sizeof(char *));
 	if (!strs)
 		return (NULL);
-	strs[index] = 0;
+	strs[argc] = 0;
 	index = 0;
-	while (*s)
+	while (*s && index < argc)
 		s = ft_strtok(&(strs[index++]), s, c);
 	return (strs);
 }
