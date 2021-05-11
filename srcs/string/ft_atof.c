@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 21:05:26 by msales-a          #+#    #+#             */
-/*   Updated: 2021/05/09 23:44:24 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/05/11 00:58:57 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,23 @@ static void	ft_atof_edge_cases(char *input, double *output)
 	free(trim);
 }
 
+int	algs_precision(char *in)
+{
+	int	count;
+
+	if (!in)
+		return (0);
+	while (*in && ft_isspace(*in))
+		in++;
+	count = 0;
+	while (*in && ft_isdigit(*in))
+	{
+		in++;
+		count++;
+	}
+	return (count);
+}
+
 double	ft_atof(char *input)
 {
 	double	i;
@@ -53,6 +70,6 @@ double	ft_atof(char *input)
 		return (s * i);
 	d = ft_atoill(temp + 1);
 	if (d)
-		d /= ft_pow(10, ft_algs_num(d));
+		d /= ft_pow(10, algs_precision(temp + 1));
 	return (s * (i + d));
 }
