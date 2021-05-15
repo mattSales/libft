@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 13:44:38 by msales-a          #+#    #+#             */
-/*   Updated: 2021/05/09 21:16:16 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/05/14 22:15:32 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_list	*ft_lstnew(void *content)
 	if (!list)
 		return (NULL);
 	list->content = content;
-	list->next = 0;
+	list->next = NULL;
+	list->previous = NULL;
 	return (list);
 }

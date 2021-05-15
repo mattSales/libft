@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 16:53:04 by msales-a          #+#    #+#             */
-/*   Updated: 2021/05/09 21:15:49 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/05/14 16:05:32 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
+	struct s_list	*previous;
 }					t_list;
 
 #endif

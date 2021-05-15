@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/23 09:33:01 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/19 16:54:13 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/05/14 22:17:41 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *l, void *(*f)(void *), void (*del)(void *));
+t_list	*ft_lstfirst(t_list *lst);
 
 #endif
