@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   math.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/23 20:45:32 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/19 08:18:50 by msales-a         ###   ########.fr       */
+/*   Created: 2020/10/19 08:13:15 by msales-a          #+#    #+#             */
+/*   Updated: 2021/06/15 23:38:54 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#ifndef MATH_H
+# define MATH_H
 
-# include "memory/memory.h"
-# include "ctype/ctype.h"
-# include "io/io.h"
-# include "list/list.h"
-# include "math/math.h"
-# include "string/string.h"
+# include "libft.h"
+
+double	ft_pow(double x, double y);
+long	ft_abs(long number);
 
 #endif

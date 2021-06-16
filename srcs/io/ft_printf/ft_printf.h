@@ -6,14 +6,14 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 17:52:42 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/27 08:02:52 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/06/15 23:41:44 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include "../io.h"
+# include "io.h"
 # include "ft_printf_util.h"
 # include "specifiers/specifiers.h"
 

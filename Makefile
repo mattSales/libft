@@ -6,16 +6,16 @@
 #    By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/02 17:28:56 by msales-a          #+#    #+#              #
-#    Updated: 2021/03/03 22:21:49 by msales-a         ###   ########.fr        #
+#    Updated: 2021/06/15 23:33:54 by msales-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	:= libft.a
 
 SOURCE_DIRECTORY	:= srcs
+HEADER_DIRECTORY	:= srcs/includes
 TARGET_DIRECTORY	:= target
 
-HEADER_FILES	:= $(filter %.h, $(shell find $(SOURCE_DIRECTORY) -type f))
 SOURCE_FILES	:= $(filter %.c, $(shell find $(SOURCE_DIRECTORY) -type f))
 OBJECT_FILES	:= $(subst $(SOURCE_DIRECTORY)/,/, $(SOURCE_FILES:.c=.o))
 OBJECT_WITH_DIR	:= $(addprefix $(TARGET_DIRECTORY), $(OBJECT_FILES))
@@ -31,12 +31,12 @@ ARCHIVE_FLAGS	:= -rcs
 
 all : $(NAME)
 
-$(NAME) : $(OBJECT_WITH_DIR) $(HEADER_FILES)
+$(NAME) : $(OBJECT_WITH_DIR)
 	@$(ARCHIVE) $(ARCHIVE_FLAGS) $(NAME) $(OBJECT_WITH_DIR)
 
 $(TARGET_DIRECTORY)/%.o : $(SOURCE_DIRECTORY)/%.c
 	@mkdir -p $(@D)
-	@$(COMPILER) $(COMPILER_FLAGS) -c $< -o $@
+	@$(COMPILER) -I$(HEADER_DIRECTORY) $(COMPILER_FLAGS) -c $< -o $@
 
 clean :
 	@rm -rf $(TARGET_DIRECTORY)

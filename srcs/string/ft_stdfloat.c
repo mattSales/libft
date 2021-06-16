@@ -6,11 +6,12 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 11:45:50 by msales-a          #+#    #+#             */
-/*   Updated: 2021/05/09 21:36:17 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/06/16 00:20:09 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "string.h"
+#include "internal/math.h"
 
 int	ft_stdfloat_exp(double number)
 {

@@ -6,11 +6,11 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 23:24:35 by msales-a          #+#    #+#             */
-/*   Updated: 2021/05/09 21:17:30 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/06/16 00:06:36 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "math.h"
+#include "internal/math.h"
 
 double	ft_pow(double x, double y)
 {

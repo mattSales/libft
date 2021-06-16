@@ -6,9 +6,11 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/30 15:45:49 by msales-a          #+#    #+#             */
-/*   Updated: 2021/05/09 21:17:35 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/06/16 00:06:53 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "internal/math.h"
 
 long	ft_abs(long number)
 {

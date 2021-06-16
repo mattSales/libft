@@ -6,11 +6,12 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 21:05:26 by msales-a          #+#    #+#             */
-/*   Updated: 2021/05/11 00:58:57 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/06/16 00:19:51 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "string.h"
+#include "internal/math.h"
 
 static void	ft_atof_edge_cases(char *input, double *output)
 {

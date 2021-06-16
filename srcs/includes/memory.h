@@ -6,14 +6,14 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/23 09:32:59 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/19 16:55:20 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/06/15 23:38:59 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MEMORY_H
 # define MEMORY_H
 
-# include "../libft.h"
+# include "libft.h"
 
 # include <stdlib.h>
 # include <stddef.h>

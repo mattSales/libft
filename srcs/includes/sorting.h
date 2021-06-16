@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ctype.h                                            :+:      :+:    :+:   */
+/*   sorting.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/23 09:31:29 by msales-a          #+#    #+#             */
-/*   Updated: 2020/10/29 09:27:03 by msales-a         ###   ########.fr       */
+/*   Created: 2021/06/15 23:48:47 by msales-a          #+#    #+#             */
+/*   Updated: 2021/06/16 00:18:07 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CTYPE_H
-# define CTYPE_H
+#ifndef SORTING_H
+# define SORTING_H
 
-# include "../libft.h"
+# include "libft.h"
 
-int	ft_isspace(int c);
-int	ft_isdigit(int c);
-int	ft_isalpha(int c);
-int	ft_isalnum(int c);
-int	ft_isascii(int c);
-int	ft_isprint(int c);
-int	ft_toupper(int c);
-int	ft_tolower(int c);
-int	ft_islower(int c);
-int	ft_isupper(int c);
-int	ft_isascii(int c);
+/**
+ * \brief Compare the size of two elements
+ *
+ * @param max The biggest element
+ * @param min The smallest element
+ *
+ * @return Return true if the "max" is bigger than "min" element
+ */
+typedef bool (*	t_comparator)(void *max, void *min);
+
+void	*heapsort(
+			void *elements,
+			size_t size,
+			t_comparator comparator,
+			int length);
 
 #endif

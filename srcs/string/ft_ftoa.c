@@ -6,11 +6,12 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 09:32:44 by msales-a          #+#    #+#             */
-/*   Updated: 2021/05/09 21:35:26 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/06/16 00:20:00 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "string.h"
+#include "internal/math.h"
 
 long long int	ft_ftoa_pvalue(double n, int p, int *s, int *l)
 {

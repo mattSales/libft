@@ -6,11 +6,12 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/15 20:30:23 by msales-a          #+#    #+#             */
-/*   Updated: 2021/05/09 21:50:47 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/06/16 00:19:30 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "string.h"
+#include "internal/math.h"
 
 char	*ft_llitoabase(long long number, char const *base)
 {
