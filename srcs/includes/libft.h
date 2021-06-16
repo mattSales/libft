@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 20:45:32 by msales-a          #+#    #+#             */
-/*   Updated: 2021/06/16 00:18:35 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/06/16 16:32:07 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include "ctype.h"
 # include "io.h"
 # include "list.h"
+# include "duallinkedlist.h"
 # include "math.h"
 # include "string.h"
 # include "sorting.h"

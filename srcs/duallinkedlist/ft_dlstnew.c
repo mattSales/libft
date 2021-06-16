@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstfirst.c                                      :+:      :+:    :+:   */
+/*   ft_dlstnew.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/01 14:07:25 by msales-a          #+#    #+#             */
-/*   Updated: 2021/05/14 22:17:15 by msales-a         ###   ########.fr       */
+/*   Created: 2020/02/01 13:44:38 by msales-a          #+#    #+#             */
+/*   Updated: 2021/06/16 16:28:57 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "list.h"
+#include "duallinkedlist.h"
 
-t_list	*ft_lstfirst(t_list *lst)
+t_dlist	*ft_dlstnew(void *content)
 {
-	if (!lst)
+	t_dlist	*list;
+
+	list = malloc(sizeof(t_dlist));
+	if (!list)
 		return (NULL);
-	while (lst->previous)
-		lst = lst->previous;
-	return (lst);
+	list->content = content;
+	list->next = NULL;
+	list->previous = NULL;
+	return (list);
 }

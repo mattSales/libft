@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/23 09:33:01 by msales-a          #+#    #+#             */
-/*   Updated: 2021/06/15 23:40:06 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/06/16 16:32:43 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
-	struct s_list	*previous;
 }					t_list;
 
 t_list	*ft_lstnew(void *content);
@@ -31,6 +30,5 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *l, void *(*f)(void *), void (*del)(void *));
-t_list	*ft_lstfirst(t_list *lst);
 
 #endif

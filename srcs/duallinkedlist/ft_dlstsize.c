@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_dlstsize.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/01 13:50:05 by msales-a          #+#    #+#             */
-/*   Updated: 2021/06/16 16:33:13 by msales-a         ###   ########.fr       */
+/*   Created: 2020/02/01 13:56:08 by msales-a          #+#    #+#             */
+/*   Updated: 2021/06/16 16:28:54 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "list.h"
+#include "duallinkedlist.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+int	ft_dlstsize(t_dlist *lst)
 {
-	if (!lst || !new)
-		return ;
-	new->next = *lst;
-	*lst = new;
+	int		length;
+
+	length = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		length++;
+	}
+	return (length);
 }
