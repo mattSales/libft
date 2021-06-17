@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 23:48:47 by msales-a          #+#    #+#             */
-/*   Updated: 2021/06/17 16:54:06 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/06/17 20:29:30 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,6 @@
 # define SORTING_H
 
 # include "libft.h"
-
-/**
- * \brief Compare the size of two elements
- *
- * @param max The biggest element
- * @param min The smallest element
- *
- * @return Return true if the "max" is bigger than "min" element
- */
-typedef bool (*	t_comparator)(const void *max, const void *min);
 
 void	*heapsort(
 			void *elements,
