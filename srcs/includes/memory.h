@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/23 09:32:59 by msales-a          #+#    #+#             */
-/*   Updated: 2021/06/15 23:38:59 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/06/17 16:53:02 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ void	*ft_memmove(void *dst, void const *src, size_t len);
 void	*ft_memchr(void const *s, int c, size_t n);
 int		ft_memcmp(void const *s1, void const *s2, size_t n);
 void	*ft_calloc(size_t count, size_t size);
+void	*generic_swap(void *a, void *b, size_t size);
 
 #endif

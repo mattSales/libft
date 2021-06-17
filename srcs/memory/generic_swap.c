@@ -1,34 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sorting.h                                          :+:      :+:    :+:   */
+/*   generic_swap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/15 23:48:47 by msales-a          #+#    #+#             */
-/*   Updated: 2021/06/17 16:54:06 by msales-a         ###   ########.fr       */
+/*   Created: 2021/06/16 23:49:44 by msales-a          #+#    #+#             */
+/*   Updated: 2021/06/17 16:52:49 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SORTING_H
-# define SORTING_H
-
-# include "libft.h"
+#include "memory.h"
 
 /**
- * \brief Compare the size of two elements
+ * \brief Swap two elements
  *
- * @param max The biggest element
- * @param min The smallest element
+ * @param a First element
+ * @param b Second element
  *
- * @return Return true if the "max" is bigger than "min" element
+ * @return A pointer for the first element of NULL when it fails
  */
-typedef bool (*	t_comparator)(const void *max, const void *min);
+void	*generic_swap(void *a, void *b, size_t size)
+{
+	void	*c;
 
-void	*heapsort(
-			void *elements,
-			size_t size,
-			t_comparator comparator,
-			int length);
-
-#endif
+	if (!a || !b || !size)
+		return (NULL);
+	c = malloc(size);
+	if (!c)
+		return (NULL);
+	ft_memmove(c, a, size);
+	ft_memmove(a, b, size);
+	ft_memmove(b, c, size);
+	free(c);
+	return (NULL);
+}
