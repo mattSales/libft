@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 14:10:32 by msales-a          #+#    #+#             */
-/*   Updated: 2021/06/16 16:29:18 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/06/18 19:36:53 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	ft_dlstadd_back(t_dlist **lst, t_dlist *new)
 		last = ft_dlstlast(*lst);
 		last->next = new;
 		new->previous = last;
+		new->next = NULL;
 	}
 	else
 		*lst = new;
