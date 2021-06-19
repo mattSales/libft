@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/23 09:33:01 by msales-a          #+#    #+#             */
-/*   Updated: 2021/06/18 18:23:16 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/06/18 21:20:52 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ void	ft_dlstiter(t_dlist *lst, void (*f)(void *));
 t_dlist	*ft_dlstmap(t_dlist *l, void *(*f)(void *), void (*del)(void *));
 t_dlist	*ft_dlstfirst(t_dlist *lst);
 t_dlist	*ft_dlstpop(t_dlist **lst, t_dlist *element);
+bool	is_dlist_sorted(t_dlist *list, t_comparator comparator);
 
 #endif
