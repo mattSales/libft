@@ -6,7 +6,7 @@
 /*   By: msales-a <msales-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/18 12:39:59 by msales-a          #+#    #+#             */
-/*   Updated: 2021/06/18 18:23:06 by msales-a         ###   ########.fr       */
+/*   Updated: 2021/06/20 17:31:20 by msales-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,7 @@ t_dlist	*ft_dlstpop(t_dlist **lst, t_dlist *element)
 		next->previous = previous;
 	if (*lst == element && next)
 		*lst = next;
+	element->previous = NULL;
+	element->next = NULL;
 	return (element);
 }
